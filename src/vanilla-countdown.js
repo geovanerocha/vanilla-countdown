@@ -26,12 +26,12 @@ var vanillaCountdown = function(options, element) {
 	}
 
 	var that = this,
-		YY = options.year,
-		MM = options.month,
-		DD = options.day,
-		HH = options.hour,
-		MI = options.minute,
-		SS = options.second;
+	    YY = options.year,
+	    MM = options.month,
+	    DD = options.day,
+	    HH = options.hour,
+	    MI = options.minute,
+	    SS = options.second;
 
 	/*
 	 *	Public function "init", to initialize the countdown.
@@ -83,7 +83,10 @@ var vanillaCountdown = function(options, element) {
 		countdown_string = countdown_string.replace('{{text_hour}}', (hh > 1) ? 'hours' : 'hour' );
 		countdown_string = countdown_string.replace('{{text_minute}}', (mm > 1) ? 'minutes' : 'minute' );
 		countdown_string = countdown_string.replace('{{text_second}}', (ss > 1) ? 'seconds' : 'second' );
-
+	    
 	    element.innerHTML = countdown_string;
+	    if(dd < 1){
+	     element.innerHTML = 'Thank you for suppor us, the event is finished!';
+	    }
 	};
 };
