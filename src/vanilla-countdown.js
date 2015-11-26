@@ -50,13 +50,14 @@ var vanillaCountdown = function(options, element) {
 	 *	Private function "countDown", with the core logic of the plugin.
 	*/
 	function countDown() {
-		var actualDate   	 = new Date(),
-	    	futureDate 	 	 = new Date(YY,MM-1,DD,HH,MI,SS),
-	    	ss 	   		 	 = parseInt((futureDate - actualDate) / 1000),
-	   		mm     			 = parseInt(ss / 60),
-	    	hh    			 = parseInt(mm / 60),
+		
+	    var actualDate   	 = new Date(),
+	    	futureDate 	 = new Date(YY,MM-1,DD,HH,MI,SS),
+	    	ss 	   	 = parseInt((futureDate - actualDate) / 1000),
+	   	mm     		 = parseInt(ss / 60),
+	    	hh    		 = parseInt(mm / 60),
 	    	countdown_string = '',
-	    	dd     			 = parseInt(hh / 24);
+	    	dd     		 = parseInt(hh / 24);
 
 	    ss = ss - (mm * 60);
 	    mm = mm - (hh * 60);
