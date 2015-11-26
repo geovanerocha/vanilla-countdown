@@ -86,7 +86,7 @@ var vanillaCountdown = function(options, element) {
 	    
 	    element.innerHTML = countdown_string;
 	    if(dd < 1){
-	     element.innerHTML = 'Thank you for suppor us, the event is finished!';
+	     element.innerHTML = 'Thank you for support us, the event is finished!';
 	    }
 	};
 };
