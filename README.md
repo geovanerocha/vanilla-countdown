@@ -5,6 +5,7 @@ parameters: options {object}, element {object(DOM_NODE)}
 
 use example:
 
+<pre><code>
 var counter = new vanillaCountdown({
 		year: 2015,
 		month: 11,
@@ -15,3 +16,4 @@ var counter = new vanillaCountdown({
 	}, element);
 	
 	counter.init();
+</code></pre>
