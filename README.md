@@ -5,7 +5,7 @@ parameters: options {object}, element {object(DOM_NODE)}
 
 use example:
 
-<pre><code>
+```javascript
 var counter = new vanillaCountdown({
 		year: 2015,
 		month: 11,
@@ -13,9 +13,9 @@ var counter = new vanillaCountdown({
 		hour: 23,
 		minute: 59,
 		second: 59,
-		text: true, [comment]: /*<- DEFAULT VALUE*/
-		end_text: 'Event is over' [comment]: /* Event finish text */
+		text: true, // Value for the text labels, default: true
+		end_text: 'Event is over' // Value for the text when the event is over
 	}, element);
 	
 	counter.init();
-</code></pre>
+```
