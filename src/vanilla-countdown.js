@@ -77,7 +77,7 @@ var vanillaCountdown = function(options, element) {
 
 	    element.innerHTML = countdown_string;
 
-	    if((options.day > actual_day) || ss < 0){
+	    if((options.day < actual_day) || ss < 0){
 		element.innerHTML = options.end_text;
 		clearInterval(interval);
 		return false;
