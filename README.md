@@ -13,8 +13,8 @@ var counter = new vanillaCountdown({
 		hour: 23,
 		minute: 59,
 		second: 59,
-		text: true, /*<- DEFAULT VALUE*/
-		end_text: 'Event is over' /* Event finish text */
+		text: true, [comment]: /*<- DEFAULT VALUE*/
+		end_text: 'Event is over' [comment]: /* Event finish text */
 	}, element);
 	
 	counter.init();
