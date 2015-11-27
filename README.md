@@ -1,4 +1,5 @@
 # vanilla-countdown
+##just 1.8kb
 A countdown plugin made with vanillaJS
 
 parameters: options {object}, element {object(DOM_NODE)}
