@@ -6,6 +6,8 @@ parameters: options {object}, element {object(DOM_NODE)}
 use example:
 
 ```javascript
+var element = document.querySelector('#my-element');
+
 var counter = new vanillaCountdown({
 		year: 2015,
 		month: 11,
