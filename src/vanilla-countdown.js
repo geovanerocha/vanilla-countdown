@@ -18,7 +18,7 @@ var vanillaCountdown = function(options, element) {
           MI = options.minute,
           SS = options.second;
 
-    options.text		 = options.text || true;
+    options.text     = options.text || true;
     options.end_text = options.end_text || 'Thank you for support us, the event has finished';
 
     that.init = function() {
