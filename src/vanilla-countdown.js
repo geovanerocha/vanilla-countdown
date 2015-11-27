@@ -63,7 +63,7 @@ var vanillaCountdown = function(options, element) {
 			countdown_string = countdown_string + text_template;
 		}
 
-		countdown_string = countdown_string.replace('{{number_day}}', (dd && dd > 1) ? dd.converted()+':' : (dd==1 ? '01:' : '') );
+		countdown_string = countdown_string.replace('{{number_day}}', (dd && dd > 0) ? dd.converted()+':' : (dd==1 ? '01:' : '') );
 		countdown_string = countdown_string.replace('{{number_hour}}', (toString(hh).length) ? hh.converted()+':' : '' );
 		countdown_string = countdown_string.replace('{{number_minute}}', (toString(mm).length) ? mm.converted()+':' : '' );
 		countdown_string = countdown_string.replace('{{number_second}}', ss.converted() );
@@ -76,10 +76,10 @@ var vanillaCountdown = function(options, element) {
 
 	    element.innerHTML = countdown_string;
 
-	    if(options.day && options.day > actual_day){
-	    	element.innerHTML = options.end_text;
-	    	return;
-	    }
+	    if((options.day && options.day > actual_day) || ss < 0){
+		element.innerHTML = options.end_text;
+		return;
+            }
 
 	}
 	
