@@ -1,18 +1,3 @@
-/** 
-	author: Geovane Rocha do Carmo
-	version: 0.0.1
-	parameters: options {object}, element {object(DOM_NODE)}
-	example: vanillaCountdown({
-		year: 2015,
-		month: 11,
-		day: 27,
-		hour: 23,
-		minute: 59,
-		second: 59
-	}, element);
-**/
-
-
 var vanillaCountdown = function(options, element) {
 	
 	if(!options || typeof(options) !== 'object') {
@@ -26,16 +11,15 @@ var vanillaCountdown = function(options, element) {
 	}
 
 	var that = this,
-	    YY = options.year,
-	    MM = options.month,
-	    DD = options.day,
-	    HH = options.hour,
-	    MI = options.minute,
-	    SS = options.second;
+		YY = options.year,
+		MM = options.month,
+		DD = options.day,
+		HH = options.hour,
+		MI = options.minute,
+		SS = options.second;
 
-	/*
-	 *	Public function "init", to initialize the countdown.
-	*/
+	options.text = options.text || true;
+
 	that.init = function() {
 		setInterval(function() {
 			countDown()
@@ -46,18 +30,15 @@ var vanillaCountdown = function(options, element) {
 		return (this < 10) ? ("0" + this) : this;
 	};
 
-	/*
-	 *	Private function "countDown", with the core logic of the plugin.
-	*/
 	function countDown() {
-		
-	    var actualDate   	 = new Date(),
-	    	futureDate 	 = new Date(YY,MM-1,DD,HH,MI,SS),
-	    	ss 	   	 = parseInt((futureDate - actualDate) / 1000),
-	   	mm     		 = parseInt(ss / 60),
-	    	hh    		 = parseInt(mm / 60),
+		var actual_date   	 = new Date(),
+			actual_day 		 = actual_date.getDate(),
+	    	future_date 	 = new Date(YY,MM-1,DD,HH,MI,SS),
+	    	ss 	   		 	 = parseInt((future_date - actual_date) / 1000),
+	   		mm     			 = parseInt(ss / 60),
+	    	hh    			 = parseInt(mm / 60),
 	    	countdown_string = '',
-	    	dd     		 = parseInt(hh / 24);
+	    	dd     			 = parseInt(hh / 24);
 
 	    ss = ss - (mm * 60);
 	    mm = mm - (hh * 60);
@@ -68,25 +49,31 @@ var vanillaCountdown = function(options, element) {
 						    	<span class="number-hour">{{number_hour}}</span> \
 						    	<span class="number-minute">{{number_minute}}</span> \
 						    	<span class="number-second">{{number_second}}</span> \
-						   </span> \
-						   <span class="vanilla-countdown-texts">	\
-								<span class="text-day">dia</span> \
-						    	<span class="text-hour">{{text_hour}}</span> \
-						    	<span class="text-minute">{{text_minute}}</span> \
-						    	<span class="text-second">{{text_second}}</span> \
 						   </span>';
+
+		if(!!options.text){
+			var text_template = '<span class="vanilla-countdown-texts">	\
+									<span class="text-day">dia</span> \
+							    	<span class="text-hour">{{text_hour}}</span> \
+							    	<span class="text-minute">{{text_minute}}</span> \
+							    	<span class="text-second">{{text_second}}</span> \
+							   </span>';
+
+			countdown_string = countdown_string + text_template;
+		}
 
 		countdown_string = countdown_string.replace('{{number_day}}', (dd && dd > 1) ? dd.converted()+':' : (dd==1 ? '01:' : '') );
 		countdown_string = countdown_string.replace('{{number_hour}}', (toString(hh).length) ? hh.converted()+':' : '' );
 		countdown_string = countdown_string.replace('{{number_minute}}', (toString(mm).length) ? mm.converted()+':' : '' );
 		countdown_string = countdown_string.replace('{{number_second}}', ss.converted() );
-		countdown_string = countdown_string.replace('{{text_hour}}', (hh > 1) ? 'hours' : 'hour' );
-		countdown_string = countdown_string.replace('{{text_minute}}', (mm > 1) ? 'minutes' : 'minute' );
-		countdown_string = countdown_string.replace('{{text_second}}', (ss > 1) ? 'seconds' : 'second' );
-	    
-	    element.innerHTML = countdown_string;
-	    if(dd < 1){
-	     element.innerHTML = 'Thank you for support us, the event is finished!';
-	    }
-	};
+
+		if(!!options.text){
+			countdown_string = countdown_string.replace('{{text_hour}}', (hh > 1) ? 'horas' : 'hora' );
+			countdown_string = countdown_string.replace('{{text_minute}}', (mm > 1) ? 'minutos' : 'minuto' );
+			countdown_string = countdown_string.replace('{{text_second}}', (ss > 1) ? 'segundos' : 'segundo' );
+		}
+
+	    (options.day && options.day > actual_day) ? element.innerHTML = 'Thank you for support us, the event has finished' : element.innerHTML = countdown_string;
+
+	}
 };
