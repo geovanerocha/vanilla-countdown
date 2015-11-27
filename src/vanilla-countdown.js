@@ -84,9 +84,9 @@
 			countdown_string = countdown_string.replace('{{number_second}}', ss.converted() );
 
 			if(options.text !== false){
-				countdown_string = countdown_string.replace('{{text_hour}}', (hh > 1) ? 'horas' : 'hora' );
-				countdown_string = countdown_string.replace('{{text_minute}}', (mm > 1) ? 'minutos' : 'minuto' );
-				countdown_string = countdown_string.replace('{{text_second}}', (ss > 1) ? 'segundos' : 'segundo' );
+				countdown_string = countdown_string.replace('{{text_hour}}', (hh > 1) ? 'hours' : 'hour' );
+				countdown_string = countdown_string.replace('{{text_minute}}', (mm > 1) ? 'minutes' : 'minute' );
+				countdown_string = countdown_string.replace('{{text_second}}', (ss > 1) ? 'seconds' : 'second' );
 			}
 
 		    element.innerHTML = countdown_string;
