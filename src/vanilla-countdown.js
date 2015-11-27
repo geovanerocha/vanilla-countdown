@@ -74,7 +74,12 @@ var vanillaCountdown = function(options, element) {
 			countdown_string = countdown_string.replace('{{text_second}}', (ss > 1) ? 'segundos' : 'segundo' );
 		}
 
-	    (options.day && options.day > actual_day) ? element.innerHTML = options.end_text : element.innerHTML = countdown_string;
+	    element.innerHTML = countdown_string;
+
+	    if(options.day && options.day > actual_day){
+	    	element.innerHTML = options.end_text;
+	    	return;
+	    }
 
 	}
 	
