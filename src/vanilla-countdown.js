@@ -95,7 +95,7 @@
 								
 			var tags = countdown_string.match(/{{.*?}}/g);
 			tags.forEach(function(tag){
-				var tagValue = tag.replace('{{', '').replace('}}', '');
+				var tagValue = tag.substr(2, tag.length - 4);
 				//split & join > replace
 				//http://jsperf.com/replace-all-vs-split-join
 				countdown_string = countdown_string
