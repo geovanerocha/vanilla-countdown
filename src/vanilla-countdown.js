@@ -101,7 +101,7 @@
 
 			element.innerHTML = countdown_string;
 
-			if ((options.day < actual_day) || ss < 0) {
+			if ((future_date.getTime() < actual_date.getTime()) || ss < 0) {
 
 				var second_element = document.querySelector('.vanilla-countdown-numbers .number-second');
 				second_element.innerHTML = '00';
