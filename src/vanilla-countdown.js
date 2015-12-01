@@ -18,7 +18,7 @@
 
 	var vanillaCountdown = function(options, element) {
 
-		if (!options || typeof(options) !== 'object') {
+		if (!options || typeof options !== 'object') {
 			console.error('Invalid parameter, must be an Object!');
 			return false;
 		}
